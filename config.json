@@ -1,0 +1,14 @@
+{
+    "name": "Zoning Out Task",
+    "exp_id": "zoning-out-task",
+    "url": "https://www.github.com/earcanal/zoning-out-task",
+    "description": "Read and answer question on chapter 1 of 'War and Peace'.",
+    "instructions": "Hmmm",
+    "template":"jspsych",
+    "cognitive_atlas_task_id": "",
+    "contributors": [
+        "Paul Sharpe",
+    ],
+    "time": 15,
+    "reference": ["https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2724753/"]
+}

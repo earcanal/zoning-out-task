@@ -1,0 +1,10 @@
+p.footnote {
+  font-size: .75em;
+}
+.page p {
+  margin: 0;
+  padding-bottom: .2em;
+}
+button#jspsych-reading-next, button#jspsych-reading-back {
+  margin-top: 1em;
+}
