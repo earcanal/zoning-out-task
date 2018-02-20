@@ -100,7 +100,7 @@ var instruction_node = {
 for (i=0; i <= last_page; i++) {
   // FIXME: http://stackoverflow.com/questions/29315005/synchronous-xmlhttprequest-deprecated/43915786#43915786
   $.ajax({
-      url : '/text/' + i + '.html',
+      url : 'text/' + i + '.html',
       cache: false,
       async: false,
       success : function(result) {
