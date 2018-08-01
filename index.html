@@ -24,51 +24,59 @@
 <script src='js/jspsych/plugins/jspsych-call-function.js'></script>
 <script src='js/jspsych/poldrack_plugins/poldrack_utils.js'></script>
 <script src='js/jspsych/poldrack_plugins/jspsych-reading.js'></script>
+<script src="js/util.js"></script>
+<script>
+    var Skip = $.QueryString.Skip ? $.QueryString.Skip : 0;
+</script>
 <script src='experiment.js'></script>
 
 <script>
-$( document ).ready(function() {
+$(document).ready(function() {
+    // allow skipping
+    var myfunc = function() { return 'do nothing'; }
+    var skip_block = {
+        type: 'call-function',
+        func: myfunc
+    }
+    if (Skip == 1) {
+        timeline = [];
+        timeline.push(skip_block);
+        fullscreen = false;
+    } else {
+        timeline = zoning_out_task_experiment;
+        fullscreen = true;
+    }
 
     jsPsych.init({
-             timeline: zoning_out_task_experiment,
+             timeline: timeline,
              display_element: "getDisplayElement",
-             fullscreen: true,
+             fullscreen: fullscreen,
              on_trial_finish: function(data){
                addID('zoning-out-task')
              },
-
              on_finish: function(data){
-
-                 // Serialize the data
+                 // serialize data
                  var promise = new Promise(function(resolve, reject) {
                      var data = jsPsych.data.dataAsJSON();
                      resolve(data);
                  })
-
                  promise.then(function(data) {
-
-
                      $.ajax({
                          type: "POST",
                          url: '/save',
                          data: { "data": data },
                          success: function(){ document.location = "/next" },
                          dataType: "application/json",
-
-                         // Endpoint not running, local save
                          error: function(err) {
-
                              if (err.status == 200){
                                 document.location = "/next"
-                             } else {
-                                 // If error, assue local save
-                                 jsPsych.data.localSave('zoning-out-task_results.csv', 'csv');
+                             } else { // if error, local save
+                                jsPsych.data.localSave('zoning-out-task_results.csv', 'csv');
                             }
                          }
                      });
                  })
              }
-
       });
 });
 </script>
