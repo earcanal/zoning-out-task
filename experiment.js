@@ -67,7 +67,8 @@ var instructions_block = {
   pages: [
     "<div class = centerbox><p class = block-text>After reading these instructions we want you to spend " + timelimit + 
     " minutes, reading some pages from Tolstoy's novel <em>War and Peace</em>.</p><p class = block-text> Read at your normal pace, using the <strong>Previous</strong> and <strong>Next</strong> buttons " +
-    "if you need to re-read anything. The experiment will automatically ask questions about what you have read after " + timelimit + ' minutes.' + ' </p></div>'
+    "if you need to re-read anything. The experiment will automatically ask questions about what you have read after " + timelimit + ' minutes.' + ' </p>' +
+    '<p class=block-text>We suggest you sit in an upright, relaxed posture that feels comfortable.</p></div>'
   ],
   allow_keys: false,
   show_clickable_nav: true,
